@@ -1,10 +1,6 @@
 <?php
 
 
-if ( file_exists( get_template_directory() . '/lib/modules/load.modules.php' ) ) :
-	require_once get_template_directory() . '/lib/modules/load.modules.php';
-endif;
-
 function shoestrap_ewa_ctions_list() {
 	$actions = array(
 		'shoestrap_pre_navbar',
