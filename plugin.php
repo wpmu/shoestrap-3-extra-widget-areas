@@ -3,7 +3,7 @@
 Plugin Name: Shoestrap 3 Extra Widget Areas
 Plugin URI: http://wpmu.io
 Description: Adds some extra widget areas to the Shoestrap theme.
-Version: 1.1
+Version: 1.2
 Author: Aristeides Stathopoulos
 Author URI:  http://aristeides.com
 GitHub Plugin URI: https://github.com/shoestrap/shoestrap-3-extra-widget-areas
