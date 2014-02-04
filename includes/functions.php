@@ -209,7 +209,7 @@ add_action( 'init', 'shoestrap_ewa_build_region' );
 
 function shoestrap_ewa_widget_area_wrapper( $action = '', $num = 3 ) {
 	if ( shoestrap_getVariable( $action . '_check' ) == '1' ) {
-		echo '<div class="row">';
+		echo '<div class="row '. $action .'">';
 			for ( $i = 1; $i < ( $num + 1 ); $i++ ) {
 				echo '<div class="col-md-' . ( 12 / $num ) . '">';
 					dynamic_sidebar( $action . '_' . $i );
