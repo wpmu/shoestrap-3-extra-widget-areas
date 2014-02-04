@@ -192,7 +192,7 @@ function shoestrap_ewa_create_widget_areas() {
 	}
 
 }
-add_action( 'init', 'shoestrap_ewa_create_widget_areas' );
+add_action( 'init', 'shoestrap_ewa_create_widget_areas', 11 );
 
 
 function shoestrap_ewa_build_region() {

@@ -482,18 +482,3 @@ function shoestrap_ewa_module_options( $sections ) {
 }
 add_filter( 'redux/options/' . REDUX_OPT_NAME . '/sections', 'shoestrap_ewa_module_options' );
 endif;
-
-
-if ( !function_exists( 'shoestrap_ewa_licensing' ) ) :
-function shoestrap_ewa_licensing($section) {
-	$section['fields'][] = array( 
-		'title' => __( 'Shoestrap Extra Widgets Licence', 'shoestrap_ewa' ),
-		'id'    => 'shoestrap_ewa_licencing_info',
-		'type'  => 'info',
-		'style' => 'info',
-		'desc'  => '<p>' . __( 'If you want to use your own licence key, you can add this line in your <code>wp-config.php</code> file:', 'shoestrap' ) . '</p><p><code>define( "SHOESTRAP_EWA_LICENCE", "YOUR_LICENCE_KEY_HERE" );</code></p>',
-	); 
-	return $section;
-}
-endif;
-add_filter( 'shoestrap_module_licencing_options_modifier', 'shoestrap_ewa_licensing' );
