@@ -24,7 +24,30 @@ if ( !defined( 'S3EWA_PLUGIN_DIR' ) )
 if ( !defined( 'S3EWA_PLUGIN_FILE' ) )
 	define( 'S3EWA_PLUGIN_FILE', __FILE__ );
 
-if ( file_exists( get_template_directory() . '/lib/modules/load.modules.php' ) ) :
+function shoestrap_ewa_include_files() {
 	include_once( S3EWA_PLUGIN_DIR . 'includes/admin.php' );
 	include_once( S3EWA_PLUGIN_DIR . 'includes/functions.php' );
-endif;
+}
+add_action( 'shoestrap_include_files', 'shoestrap_ewa_include_files' );
+
+
+function shoestrap_ewa_updater() {
+
+	$args = array(
+		'remote_api_url' => 'http://shoestrap.org',
+		'item_name'      => 'Shoestrap 3 Extra Widget Areas',
+		'version'        => '1.3',
+		'author'         => 'Aristeides Stathopoulos',
+		'mode'           => 'plugin',
+		'title'          => 'Shoestrap 3 Extra Widget Areas Plugin License',
+		'field_name'     => 'shoestrap_ewa_license',
+		'description'    => 'The licence key provided with Shoestrap 3 Extra Widget Areas.',
+		'single_license' => false
+	);
+
+	if ( class_exists( 'SS_EDD_SL_Updater' ) ) {
+		$updater = new SS_EDD_SL_Updater( $args );
+	}
+
+}
+add_action( 'admin_init', 'shoestrap_ewa_updater' );

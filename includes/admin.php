@@ -3,8 +3,8 @@
 
 function shoestrap_ewa_ctions_list() {
 	$actions = array(
-		'shoestrap_pre_navbar',
-		'shoestrap_post_navbar',
+		'shoestrap_pre_top_bar',
+		'shoestrap_do_navbar',
 		'shoestrap_pre_main',
 		'shoestrap_index_begin',
 		'shoestrap_index_end',
@@ -25,7 +25,7 @@ function shoestrap_ewa_module_options( $sections ) {
 
 	$section = array(
 		'title' => __( 'Extra Widgets', 'shoestrap' ),
-		'icon'  => 'el-icon-chevron-right icon-large'
+		'icon'  => 'el-icon-chevron-right  '
 	);
 
 	$fields[] = array(
@@ -43,7 +43,7 @@ function shoestrap_ewa_module_options( $sections ) {
 			When you enable a field, the corresponding options will be shown right below it so that you can change them.', 'shoestrap_ewa'),
 	);
 
-	$action = 'shoestrap_pre_navbar';
+	$action = 'shoestrap_pre_top_bar';
 	$fields[] = array(
 		'id'       => $action . '_check',
 		'type'     => 'button_set',
@@ -86,7 +86,7 @@ function shoestrap_ewa_module_options( $sections ) {
 			'required' => array( $action . '_check', '=', array( '2' ) ),
 		);
 
-	$action = 'shoestrap_post_navbar';
+	$action = 'shoestrap_do_navbar';
 	$fields[] = array(
 		'id'       => $action . '_check',
 		'type'     => 'button_set',

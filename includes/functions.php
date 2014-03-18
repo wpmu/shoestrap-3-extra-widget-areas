@@ -2,12 +2,13 @@
 
 
 function shoestrap_ewa_create_widget_areas() {
+	global $ss_framework;
 	$widgets_mode = shoestrap_getVariable( 'widgets_mode' );
 	
 	if ( $widgets_mode == 0 ) {
 		$class        = 'panel panel-default';
-		$before_title = '<div class="panel-heading">';
-		$after_title  = '</div><div class="panel-body">';
+		$before_title = $ss_framework->open_panel_heading( null );
+		$after_title  = '</div>'.$ss_framework->open_panel_body( null );
 
 	} elseif ( $widgets_mode == 1 ) {
 		$class        = 'well';
@@ -21,7 +22,7 @@ function shoestrap_ewa_create_widget_areas() {
 
 	}
 
-	$action = 'shoestrap_pre_navbar';
+	$action = 'shoestrap_pre_top_bar';
 	if ( shoestrap_getVariable( $action . '_check' ) == '1' ) {
 		$i = 1;
 		$times_to_run = shoestrap_getVariable( $action . '_nr' );
@@ -38,7 +39,7 @@ function shoestrap_ewa_create_widget_areas() {
 		}
 	}
 
-	$action = 'shoestrap_post_navbar';
+	$action = 'shoestrap_do_navbar';
 	if ( shoestrap_getVariable( $action . '_check' ) == '1' ) {
 		$i = 1;
 		$times_to_run = shoestrap_getVariable( $action . '_nr' );
@@ -208,29 +209,30 @@ add_action( 'init', 'shoestrap_ewa_build_region' );
 
 
 function shoestrap_ewa_widget_area_wrapper( $action = '', $num = 3 ) {
+	global $ss_framework;
 	if ( shoestrap_getVariable( $action . '_check' ) == '1' ) {
-		echo '<div class="row '. $action .'">';
+		echo $ss_framework->open_row( 'div', null, $action, null );
 			for ( $i = 1; $i < ( $num + 1 ); $i++ ) {
-				echo '<div class="col-md-' . ( 12 / $num ) . '">';
+				echo '<div class="'. $ss_framework->column_classes( array( 'medium' => 12 / $num ), null ) .'">';
 					dynamic_sidebar( $action . '_' . $i );
 				echo '</div>';
 			}
-		echo '</div>';
+		echo $ss_framework->close_row( 'div' );
 	} elseif ( shoestrap_getVariable( $action . '_check' ) == '2' ) {
 		echo apply_filters( 'the_content', shoestrap_getVariable( $action . '_custom_content' ) );
 	}
 }
 
 
-function shoestrap_ewa_shoestrap_pre_navbar() {
-	$action = 'shoestrap_pre_navbar';
+function shoestrap_ewa_shoestrap_pre_top_bar() {
+	$action = 'shoestrap_pre_top_bar';
 	$num    = intval( shoestrap_getVariable( $action . '_nr' ) );
 	shoestrap_ewa_widget_area_wrapper( $action, $num );
 }
 
 
-function shoestrap_ewa_shoestrap_post_navbar() {
-	$action = 'shoestrap_post_navbar';
+function shoestrap_ewa_shoestrap_do_navbar() {
+	$action = 'shoestrap_do_navbar';
 	$num    = intval( shoestrap_getVariable( $action . '_nr' ) );
 	shoestrap_ewa_widget_area_wrapper( $action, $num );
 }
